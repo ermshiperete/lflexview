@@ -13,9 +13,9 @@
 /**
  */
 require_once (SGF_CORE.'Controller/actionpath.php');
-require_once (SGF_CORE.'Controller/urlwriter.php');
-require_once (SGF_CORE.'data/IDataSpace.php');
-require_once (SGF_CORE.'data/dotpath.php');
+require_once (SGF_CORE.'Controller/URLMapper.php');
+require_once (SGF_CORE.'Data/IDataSpace.php');
+require_once (SGF_CORE.'Data/dotpath.php');
 
 /**
  * @package		ARK
@@ -81,7 +81,7 @@ class Traversal {
 	/**
 	 * @var URLWriter
 	 */
-	private $_urlWriter;
+	private $_urlMapper;
 
 	/**
 	 * @var View
@@ -134,7 +134,7 @@ class Traversal {
 		$this->_state = null;
 		$this->_currentState = null;
 		$this->_context = array();
-		$this->_urlWriter = new URLWriter($_SERVER['PHP_SELF']);
+		$this->_urlMapper = new URLMapper($_SERVER['PHP_SELF']);
 	}
 
 	/**
@@ -157,8 +157,8 @@ class Traversal {
 	 * Set the URLWriter for the traversal
 	 * @param URLWriter
 	 */
-	function setURLWriter($urlWriter) {
-		$this->_urlWriter = $urlWriter;
+	function setURLMapper($urlMapper) {
+		$this->_urlMapper = $urlMapper;
 	}
 
 	/**
@@ -166,11 +166,11 @@ class Traversal {
 	 * @param ActionPath
 	 */
 	function begin($target) {
-		$this->_path = new ActionPath('');
+		$this->_path = new ActionPath();
 		if ($target != null) {
 			$this->_targetPath = $target;
 		} else {
-			$this->_targetPath = new ActionPath('');
+			$this->_targetPath = new ActionPath();
 		}
 
 		$this->_traversal = array();
@@ -231,7 +231,7 @@ class Traversal {
 		$ap = $this->_path;
 		$ap->pop();
 		$ap->push($action);
-		return $this->_urlWriter->write($ap->toPath());
+		return $this->_urlMapper->write($ap->toPath());
 	}
 
 	/**
@@ -248,7 +248,7 @@ class Traversal {
 		} else {
 			$action = '';
 		}
-		return $this->_urlWriter->write($action);
+		return $this->_urlMapper->write($action);
 	}
 
 	/**
@@ -295,9 +295,6 @@ class Traversal {
 	function actionGetNextName() {
 		$ret = null;
 		$action = $this->_targetPath->get($this->_level);
-		if ($action) {
-			$ret = $action->getName();
-		}
 		return $ret;
 	}
 

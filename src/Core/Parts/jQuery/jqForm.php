@@ -43,7 +43,7 @@ class JQForm extends Form {
 	 * @param Traversal
 	 * @return boolean Returns true if the event is handled.
 	 */
-	function onAction(&$e, &$t) {
+	function onAction($e, $t) {
 		$ret = false;
 		$a = $t->getAction();
 		$op = $a->get(0);
@@ -95,7 +95,7 @@ class JQForm extends Form {
 	 * @param Traversal
 	 * @return boolean Returns true always
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$op = '';
 		$primary = '';
 		$a0 = $t->getAction();

@@ -71,9 +71,9 @@ class EventQueue {
 		assert(is_a($e, 'Event'));
 		if ($e->getType() == EVT_Render) {
 			$this->hasRender_ = true;
-			$ap = $e->getActionPath();
-			assert(is_a($ap, 'ActionPath'));
-			$path = $ap->toPath();
+			//$ap = $e->getActionPath();
+			//assert(is_a($ap, 'ActionPath'));
+			//$path = $ap->toPath();
 			//TODO Not sure why this is here really. Looks like logging to me.
 			//			$s = Session::singleton();
 			//			$s->set('render', $path);

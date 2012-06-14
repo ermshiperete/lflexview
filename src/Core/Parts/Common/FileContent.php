@@ -13,8 +13,8 @@
 /**
  */
 require_once (SGF_CORE.'Controller/part.php');
-require_once (SGF_CORE.'data/ValueSpace.php');
-require_once (SGF_CORE.'data/FileValueMapper.php');
+require_once (SGF_CORE.'Data/ValueSpace.php');
+require_once (SGF_CORE.'Data/FileValueMapper.php');
 require_once (SGF_CORE.'Parts/std/FileContentSchema.php');
 
 /**
@@ -56,7 +56,7 @@ class FileContent extends Part {
 		return $space;
 	}
 
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		parent::onRender($e, $t);
 		// Load the meta data
 		$this->_data->setMeta(SC_Meta_Source, self::metaFilePath($this->_baseFilePath));

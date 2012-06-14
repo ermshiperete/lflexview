@@ -12,7 +12,7 @@
 
 /**
  */
-require_once (SGF_CORE.'data/schema.php');
+require_once (SGF_CORE.'Data/schema.php');
 
 /**
  *

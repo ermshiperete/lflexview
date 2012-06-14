@@ -72,7 +72,7 @@ class Page extends Part {
 	 * Sets the Page in the Traversal.
 	 * @param Traversal
 	 */
-	function onRenderEnter(&$t) {
+	function onRenderEnter($t) {
 		parent::onRenderEnter($t);
 		$t->pageSet($this);
 	}
@@ -83,7 +83,7 @@ class Page extends Part {
 	 * - TEMPLATEPATH
 	 * @see src/controller/Part#onRender($e, $t)
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		if ($this->_view == null) {
 			return;
 		}
@@ -104,7 +104,7 @@ class Page extends Part {
 	 * This delivers the output to the output stream by calling patTemplate::displayParsedTemplate.
 	 * @access protected
 	 */
-	function onRenderLeave(&$t) {
+	function onRenderLeave($t) {
 		if ($this->_view == null) {
 			return;
 		}

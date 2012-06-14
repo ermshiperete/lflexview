@@ -12,7 +12,7 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/dispatch.php');
+require_once (SGF_CORE.'Controller/Dispatch.php');
 
 
 /**

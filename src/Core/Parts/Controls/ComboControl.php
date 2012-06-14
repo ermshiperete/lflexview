@@ -13,7 +13,7 @@
 /**
  */
 require_once (SGF_CORE.'Controller/control.php');
-require_once (SGF_CORE.'data/IDataProvider.php');
+require_once (SGF_CORE.'Data/IDataProvider.php');
 
 /**
  * A ComboBox Control

@@ -14,7 +14,7 @@
 /**
  */
 require_once(SGF_CORE . 'Controller/part.php');
-require_once(SGF_CORE . 'data/arrayiterator.php');
+require_once(SGF_CORE . 'Data/arrayiterator.php');
 
 /**
  * Value is a Part that pushes key value pairs into the View
@@ -45,7 +45,7 @@ class ValuePart extends Part {
 	 * @param Traversal
 	 * @return boolean Returns true always
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$it = new ArrayIterator($this->values_);
 		for ($it->rewind(); $it->isValid(); $it->next()) {

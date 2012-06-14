@@ -37,7 +37,7 @@ class ContainerPart extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$this->renderProperties($t);
 		$this->renderArguments($t);
 		$childRenders = array();

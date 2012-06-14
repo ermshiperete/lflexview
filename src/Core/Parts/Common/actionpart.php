@@ -62,7 +62,7 @@ class ActionPart extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$v->pushText('NAME', $this->_name);
 		$v->pushText('LABEL', $this->label_);

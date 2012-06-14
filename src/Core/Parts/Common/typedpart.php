@@ -16,7 +16,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'data/keyspaceiterator.php');
+require_once(SGF_CORE . 'Data/keyspaceiterator.php');
 require_once(SGF_CORE . 'Controller/part.php');
 
 /**
@@ -49,7 +49,7 @@ class TypedLabels extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$it = new ArrayIterator($this->keys_);
 		for ($it->rewind(); $it->isValid(); $it->next()) {
@@ -139,7 +139,7 @@ class TypedKeySpacePart extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$space = $t->dataGet('keyspace');
 		if ($space) {
@@ -206,7 +206,7 @@ class TypedDataPart extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$space = $t->dataGet('keyspace');
 		if ($space) {
 			$v = $t->viewGet();

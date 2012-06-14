@@ -48,7 +48,7 @@ class Menu extends ActionPart {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		parent::onRender($e, $t);
 		$v = $t->viewGet();
 		$nextActionName = $t->getNextActionName();

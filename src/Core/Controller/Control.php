@@ -64,7 +64,7 @@ class Control extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function canHandle(&$e, &$t) {
+	function canHandle($e, $t) {
 		$type = $e->getType();
 		switch ($type) {
 			case EVT_Data:

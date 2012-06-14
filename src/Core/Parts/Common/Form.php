@@ -14,7 +14,7 @@
  */
 require_once (SGF_CORE.'Controller/actionpath.php');
 require_once (SGF_CORE.'Controller/part.php');
-require_once (SGF_CORE.'data/IDataSpace.php');
+require_once (SGF_CORE.'Data/IDataSpace.php');
 
 /**
  * Form is an implementations of a web Form.
@@ -149,7 +149,7 @@ class Form extends Part {
 	 * @param Traversal
 	 * @see onAction
 	 */
-	function runCancel(&$e, &$t) {
+	function runCancel($e, $t) {
 		if ($this->_cancelTask) {
 			//            $this->_cancelTask->setParameter($this->_ioSpace); // TODO review Form::runCancel
 			$this->_cancelTask->run();
@@ -163,7 +163,7 @@ class Form extends Part {
 	 * @param Traversal
 	 * @see onAction
 	 */
-	function runSave(&$e, &$t) {
+	function runSave($e, $t) {
 		if ($this->_saveTask) {
 			//            $this->_saveTask->setParameter($this->_ioSpace); //TODO review Form::runSave
 			$this->_saveTask->run();

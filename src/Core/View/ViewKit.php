@@ -12,7 +12,7 @@
 
 /**
  */
-//require_once (SGF_CORE.'data/error.php');
+//require_once (SGF_CORE.'Error.php');
 require_once (SGF_CORE.'View/IView.php');
 require_once (SGF_CORE.'View/Providers/ViewFromCommon.php');
 require_once (SGF_CORE.'View/Providers/ViewFromFile.php');

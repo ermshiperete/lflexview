@@ -12,7 +12,7 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/dispatch.php');
+require_once (SGF_CORE.'Controller/Dispatch.php');
 require_once (SGF_CORE.'Controller/event.php');
 require_once (SGF_CORE.'Controller/eventqueue.php');
 require_once (SGF_CORE.'Controller/traversal.php');
@@ -27,14 +27,14 @@ abstract class FrontController extends Dispatcher {
 	 * The default action
 	 * @access protected
 	 */
-	var $defaultAction_;
+	var $_defaultAction;
 
 	/**
 	 * Constructor
 	 */
 	function __construct() {
 		parent::__construct('/');
-		$this->defaultAction_ = '';
+		$this->_defaultAction = '';
 	}
 
 	/**
@@ -43,7 +43,7 @@ abstract class FrontController extends Dispatcher {
 	 * @param string
 	 */
 	function setDefaultAction($action) {
-		$this->defaultAction_ = $action;
+		$this->_defaultAction = $action;
 	}
 
 	/**
@@ -60,7 +60,7 @@ abstract class FrontController extends Dispatcher {
 		if (isset($_GET['act'])) {
 			$action = $_GET['act'];
 		} else {
-			$action = $this->defaultAction_;
+			$action = $this->_defaultAction;
 		}
 		return new ActionPath($action);
 	}

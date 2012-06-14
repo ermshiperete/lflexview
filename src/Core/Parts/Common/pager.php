@@ -14,7 +14,7 @@
 /**
  */
 require_once(SGF_CORE . 'Controller/part.php');
-require_once(SGF_CORE . 'data/accessor.php');
+require_once(SGF_CORE . 'Data/accessor.php');
 
 /**
  * @package		ARK
@@ -63,7 +63,7 @@ class Pager extends Part {
 	 * @param Traversal
 	 * @todo Fix the pager for refresh. ie. include the start in the url
 	 */
-	function onAction(&$e, &$t) {
+	function onAction($e, $t) {
 		$start = $t->stateGet('start');
 		$size = $t->stateGet('size');
 		$it = $this->accessor_->getIterator($t);
@@ -107,7 +107,7 @@ class Pager extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		if ($this->count_ < 0) {
 			$it = $this->accessor_->getIterator($t);

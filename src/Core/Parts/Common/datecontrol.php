@@ -53,7 +53,7 @@ class DateComboControl extends Control {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onData(&$e, &$t) {
+	function onData($e, $t) {
 		$d = $_POST[$this->_name . '_d'] . ' ' . $_POST[$this->_name . '_m'];
 		$tt = strtotime($d);
 		$value = strftime('%Y-%m-%d', $tt);
@@ -66,7 +66,7 @@ class DateComboControl extends Control {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$v->pushText('TITLE', $this->label_);
 		$v->pushText('REQD', $this->isRequired());

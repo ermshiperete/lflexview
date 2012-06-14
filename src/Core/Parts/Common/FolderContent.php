@@ -35,7 +35,7 @@ class FolderContent extends Part {
 		$this->fileName = '';
 	}
 
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		// foreach key in data push into view
 		$metaFilePath = $this->fileName . '.meta';
 		$templateFilePath = $this->fileName . '.html.php';

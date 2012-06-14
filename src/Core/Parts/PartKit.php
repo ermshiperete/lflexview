@@ -14,6 +14,24 @@
  */
 class PartKit
 {
+	public static function handler($name, $file, $class = '') {
+		require_once(SGF_CORE.'Controller/Handler.php');
+		if (!$class) {
+			$class = $name;
+		}
+		return new Handler($name, new Handle($file, $class));
+	}
+	
+	public static function page($name, $viewProvider, $context = null) {
+		require_once(SGF_CORE.'Parts/Common/Page.php');
+		return new Page($name, $viewProvider, $context = null);
+	}
+
+	public static function form($name, $viewProvider, $position, $dataProvider) {
+		require_once(SGF_CORE.'Parts/Common/Form.php');
+		return new Form($name, $viewProvider, $position, $dataProvider);
+	}
+	
 	public static function textControl($name, $viewProvider, $position, $form, $id, $label, $size) {
 		require_once(SGF_CORE.'Parts/Controls/TextControl.php');
 		return new TextControl($name, $viewProvider, $position, $form, $id, $label, $size);

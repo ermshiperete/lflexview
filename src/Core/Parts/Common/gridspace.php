@@ -98,7 +98,7 @@ class TypedGridSpace extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$a0 = $t->getAction();
 		if ($a0) {

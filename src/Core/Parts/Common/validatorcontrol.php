@@ -13,7 +13,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'data/arrayiterator.php');
+require_once(SGF_CORE . 'Data/arrayiterator.php');
 require_once(SGF_CORE . 'Controller/control.php');
 
 /**
@@ -34,7 +34,7 @@ class ValidatorErrorControl extends Control {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$validator = $this->form_->getValidator();
 		if ($validator) {

@@ -12,7 +12,7 @@
 
 /**
  */
-require_once (SGF_CORE.'data/IDataSpace.php');
+require_once (SGF_CORE.'Data/IDataSpace.php');
 require_once (SGF_CORE.'Controller/part.php');
 
 /**
@@ -180,7 +180,7 @@ class TableBody extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = &$t->viewGet();
 		$it = &$this->accessor_->getIterator($t);
 		if ($it != null) {
@@ -233,7 +233,7 @@ class TableRow extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = &$t->viewGet();
 		$space = &$t->dataGet('keyspace');
 		if ($space) {
@@ -307,7 +307,7 @@ class TableKeyAction extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = &$t->viewGet();
 		$space = &$t->dataGet('keyspace');
 		if ($space) {
@@ -385,7 +385,7 @@ class TableAction extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = &$t->viewGet();
 		$space = &$t->dataGet('keyspace');
 		if ($space) {
@@ -445,7 +445,7 @@ class TableDeleteAction extends TableAction {
 	 * @param Traversal
 	 * @return boolean Returns true if the event is handled.
 	 */
-	function onAction(&$e, &$t) {
+	function onAction($e, $t) {
 		$ret = false;
 		$a = $t->getAction();
 		if ($a) {

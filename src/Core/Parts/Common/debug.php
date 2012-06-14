@@ -13,7 +13,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'data/error.php');
+require_once(SGF_CORE . 'Error.php');
 require_once(SGF_CORE . 'Util/debug.php');
 require_once(SGF_CORE . 'Controller/part.php');
 
@@ -37,7 +37,7 @@ class DebugPart extends Part {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		assert(is_a($v, 'View'));
 		// Error

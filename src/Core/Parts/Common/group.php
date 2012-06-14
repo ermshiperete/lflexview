@@ -50,7 +50,7 @@ class Group extends Part {
 	 * @param Traversal
 	 * @return boolean Returns true always
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$v->pushText('TITLE', $this->title_);
 		$v->pushText('IMAGE', $this->image_);

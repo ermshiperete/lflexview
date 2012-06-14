@@ -13,7 +13,7 @@
 /**
  */
 require_once (SGF_CORE.'Controller/deck.php');
-require_once (SGF_CORE.'data/session.php');
+require_once (SGF_CORE.'Data/session.php');
 require_once (SGF_CORE.'Controller/event.php');
 require_once (SGF_CORE.'Controller/eventqueue.php');
 require_once (SGF_CORE.'Controller/traversal.php');
@@ -68,7 +68,7 @@ class Authorised extends Deck {
 	 * @param Traversal
 	 * @return boolean Returns true if the event is handled.
 	 */
-	function onAction(&$e, &$t) {
+	function onAction($e, $t) {
 		$ret = false;
 		$eq = &EventQueue::singleton();
 		$s = &Session::singleton();
@@ -151,7 +151,7 @@ class IsAuthorised extends Deck {
 	 * @param Traversal
 	 * @return boolean Returns true if the event is handled.
 	 */
-	function onAction(&$e, &$t) {
+	function onAction($e, $t) {
 		$eq = &EventQueue::singleton();
 		$s = &Session::singleton();
 		if ($s->getPrivilege() >= $this->privilege_) {

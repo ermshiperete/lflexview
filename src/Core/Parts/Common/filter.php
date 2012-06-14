@@ -14,7 +14,7 @@
 /**
  */
 require_once(SGF_CORE . 'Controller/part.php');
-require_once(SGF_CORE . 'data/accessor.php');
+require_once(SGF_CORE . 'Data/accessor.php');
 
 /**
  * @package		ARK
@@ -51,7 +51,7 @@ class Filter extends Deck {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function handle(&$e, &$t) {
+	function handle($e, $t) {
 		$where = $t->stateGet('where');
 		if ($where != $this->where_) {
 			if ($this->where_) {

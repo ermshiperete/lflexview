@@ -13,7 +13,7 @@
 /**
  */
 require_once (SGF_CORE.'Controller/control.php');
-require_once (SGF_CORE.'data/IDataProvider.php');
+require_once (SGF_CORE.'Data/IDataProvider.php');
 
 /**
  * A Radio Button Control
@@ -48,7 +48,7 @@ class RadioControl extends Control {
 	 * @param Event
 	 * @param Traversal
 	 */
-	function onRender(&$e, &$t) {
+	function onRender($e, $t) {
 		$v = $t->viewGet();
 		$v->pushText('Label', $this->getLabel());
 		$v->pushText('Reqd', $this->isRequired());
