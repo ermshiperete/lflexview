@@ -6,7 +6,7 @@
 /**
  * @package		ARK
  * @subpackage	Parts
- * @version		$Id: page.php,v 1.1.1.1 2006/04/13 01:11:02 cambell Exp $
+ * @version		$Id: Page.php,v 1.1.1.1 2006/04/13 01:11:02 cambell Exp $
  * @author		Cambell Prince <cambell@arketec.com>
  * @link			http://www.arketec.com
  * @see
@@ -14,7 +14,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
+require_once(SGF_CORE . 'Controller/Part.php');
 
 /**
  * A Page is a controller that causes the View to render to the client.
@@ -81,7 +81,7 @@ class Page extends Part {
 	 * Sets Page variables in the View
 	 * - TITLE
 	 * - TEMPLATEPATH
-	 * @see src/controller/Part#onRender($e, $t)
+	 * @see src/Controller/Part#onRender($e, $t)
 	 */
 	function onRender($e, $t) {
 		if ($this->_view == null) {
