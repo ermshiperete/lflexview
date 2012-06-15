@@ -24,7 +24,7 @@ class Application extends FrontController
 		ControllerKit::connectURLMapper($_SERVER['PHP_SELF']);
 		ViewKit::connect('php');
 
-		$this->setDefaultAction(ActionPath::fromString('Page'));
+		$this->setDefaultAction(ActionPath::fromString('Page/Home'));
 		
 		$page = PartKit::page('Page', ViewKit::providerFromCommon('Page'));
 
