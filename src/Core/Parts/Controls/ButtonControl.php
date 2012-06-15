@@ -12,7 +12,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'controller/control.php');
+require_once(SGF_CORE . 'Controller/Control.php');
 
 /**
  * A ButtonControl
@@ -23,7 +23,7 @@ class ButtonControl extends Control {
 	/**
 	 * Constructor
 	 */
-	function __construct($name, $viewProvider, $position, &$form, $id, $label) {
+	function __construct($name, $viewProvider, $position, $form, $id, $label) {
 		parent::__construct($name, $viewProvider, $position, $form, $id, $label);
 	}
 

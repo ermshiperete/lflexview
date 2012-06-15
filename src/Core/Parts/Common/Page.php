@@ -95,7 +95,7 @@ class Page extends Part {
 		$this->_view->pushText('Scripts', $this->renderScripts());
 		// Render page variables
 		$this->_view->pushText('Title', $this->_title);
-		$viewKit = ViewKit::singleton();
+		//$viewKit = ViewKit::singleton();
 		//		$this->_view->pushText('TemplatePath', $viewKit->getTemplatePath()); // TODO review: no longer relevant?
 	}
 

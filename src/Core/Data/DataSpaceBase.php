@@ -212,7 +212,7 @@ abstract class DataSpaceBase implements IDataSpace {
 	/**
 	 * @see IDataSpace::leave()
 	 */
-	function leave(&$t) {
+	function leave($t) {
 	}
 
 	/**

@@ -4,6 +4,7 @@
 </head>
 <body>
 <p>The page</p>
-<?php echo $BODY; ?>
+<div>
+<?php echo $SearchForm; ?></div>
 </body>
 </html>

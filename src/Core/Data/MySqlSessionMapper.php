@@ -13,7 +13,7 @@
 /**
  */
 require_once (SGF_CORE.'Data/MySqlValueMapper.php');
-require_once (SGF_CORE.'Data/schema.php');
+require_once (SGF_CORE.'Data/Schema.php');
 
 /**
  *

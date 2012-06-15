@@ -13,7 +13,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Data/arrayspace.php');
+require_once(SGF_CORE . 'Data/Arrayspace.php');
 
 /**
  * The FileDataSpace is a container for a set of named key value pairs (basically an associative array).

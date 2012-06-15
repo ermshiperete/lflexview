@@ -12,7 +12,7 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/control.php');
+require_once (SGF_CORE.'Controller/Control.php');
 require_once (SGF_CORE.'Data/IDataProvider.php');
 
 /**

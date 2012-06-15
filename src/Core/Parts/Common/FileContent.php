@@ -12,10 +12,10 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/part.php');
+require_once (SGF_CORE.'Controller/Part.php');
 require_once (SGF_CORE.'Data/ValueSpace.php');
 require_once (SGF_CORE.'Data/FileValueMapper.php');
-require_once (SGF_CORE.'Parts/std/FileContentSchema.php');
+require_once (SGF_CORE.'Parts/Std/FileContentSchema.php');
 
 /**
  * A FileContent part

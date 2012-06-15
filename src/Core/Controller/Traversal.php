@@ -12,28 +12,37 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/actionpath.php');
+require_once (SGF_CORE.'Controller/ActionPath.php');
 require_once (SGF_CORE.'Controller/URLMapper.php');
 require_once (SGF_CORE.'Data/IDataSpace.php');
-require_once (SGF_CORE.'Data/dotpath.php');
+require_once (SGF_CORE.'Data/Dotpath.php');
 
 /**
  * @package		ARK
  * @subpackage	Controller
  */
 class TraversalEntry {
+	/**
+	 * @var string
+	 */
 	var $name;
-	var $action;
+	
+	/**
+	 * @var Command
+	 */
+	var $command;
+	
+	/**
+	 * @var Dispatchable
+	 */
 	var $dispatchable;
 
-	function TraversalEntry() {
-		$this->name = null;
-		$this->action = null;
-		$this->dispatchable = null;
+	function __construct($name_, $dispatchable_) {
+		$this->name = $name_;
+		$this->dispatchable = $dispatchable_;
 	}
-
+	
 }
-;
 
 /**
  * @package		ARK
@@ -79,7 +88,7 @@ class Traversal {
 	private $_dataLevel;
 
 	/**
-	 * @var URLWriter
+	 * @var IURLMapper
 	 */
 	private $_urlMapper;
 
@@ -99,16 +108,18 @@ class Traversal {
 	private $_page;
 
 	/**
-	 * An array representing the traversal stack. Every enter causes a new entry to be pushed on the stack.
+	 * An array representing the traversal stack. Every enter causes a new TraversalEntry to be pushed on the stack.
 	 * Every leave pops the stack.
 	 * @see enter
 	 * @see leave
+	 * @var TraversalEntry[]
 	 */
 	private $_traversal;
 
 	/**
 	 * $_level is always set to the last valid entry of the $_traversal stack. i.e. count($_traversal) - 1
 	 * @see $_traversal
+	 * @var int
 	 */
 	private $_level;
 
@@ -117,6 +128,7 @@ class Traversal {
 	 * @see TraversalEntry
 	 * @see enter
 	 * @see leave
+	 * @var TraversalEntry
 	 */
 	private $_current;
 
@@ -147,15 +159,15 @@ class Traversal {
 	 * @param DataSpace
 	 * @param URLWriter
 	 */
-	function stateSetRoot(&$state) {
+	function stateSetRoot($state) {
 		// One time initialisation
-		$this->_state = &$state;
+		$this->_state = $state;
 		$this->_currentState = null;
 	}
 
 	/**
-	 * Set the URLWriter for the traversal
-	 * @param URLWriter
+	 * Set the IURLMapper for the traversal
+	 * @param IURLMapper
 	 */
 	function setURLMapper($urlMapper) {
 		$this->_urlMapper = $urlMapper;
@@ -176,12 +188,10 @@ class Traversal {
 		$this->_traversal = array();
 		$this->_context = array();
 
-		$te = new TraversalEntry;
-		$te->name = '/';
-		$te->action = null;
-		$this->_traversal[] = &$te;
+		$te = new TraversalEntry('/', NULL);
+		$this->_traversal[] = $te;
 
-		$this->_current = &$te;
+		$this->_current = $te;
 		$this->_currentState = null;
 
 		$this->_level = 0;
@@ -207,15 +217,15 @@ class Traversal {
 	 * Returns the current action
 	 * @return Action The current action
 	 */
-	function getAction() {
-		return $this->_current->action;
+	function getCommand() {
+		return $this->_current->command;
 	}
 
 	/**
 	 * Save the current path with the given name
 	 * @param string
 	 * @see ActionPath
-	 * @see buildURLByPath
+	 * @see urlFromPath
 	 */
 	function saveContext($name) {
 		$this->_context[$name] = $this->_path;
@@ -227,11 +237,12 @@ class Traversal {
 	 * @param Action
 	 * @return string Suitable for use as the next URL
 	 */
-	function buildURLByAction($action) {
+	public function urlFromCommand($command) {
+		//FIXME DONE?
 		$ap = $this->_path;
-		$ap->pop();
-		$ap->push($action);
-		return $this->_urlMapper->write($ap->toPath());
+		//$ap->pop();
+		//$ap->push($action);
+		return $this->_urlMapper->write($ap, $command);
 	}
 
 	/**
@@ -239,16 +250,9 @@ class Traversal {
 	 * This function calls buildActionPath to get the action path to merge with.
 	 * @param ActionPath
 	 * @return string Suitable for use as the next URL
-	 * @see buildActionPath
 	 */
-	function buildURLByPath($actionPath) {
-		$ap = $this->buildActionPath($actionPath);
-		if ($ap) {
-			$action = $ap->toPath();
-		} else {
-			$action = '';
-		}
-		return $this->_urlMapper->write($action);
+	public function urlFromPath($actionPath) {
+		return $this->_urlMapper->write($actionPath);
 	}
 
 	/**
@@ -258,6 +262,7 @@ class Traversal {
 	 * @return ActionPath May be null if context not found
 	 */
 	function buildActionPath($actionPath) {
+		//FIXME
 		$context = $actionPath->getContext();
 		$ret = null;
 		switch ($context) {
@@ -282,20 +287,11 @@ class Traversal {
 	}
 
 	/**
-	 * @deprecated
-	 * @see actionGetNextName
-	 */
-	function getNextActionName() {
-		return $this->actionGetNextName();
-	}
-
-	/**
 	 * @return string The next action name
 	 */
 	function actionGetNextName() {
-		$ret = null;
 		$action = $this->_targetPath->get($this->_level);
-		return $ret;
+		return $action;
 	}
 
 	/**
@@ -304,36 +300,28 @@ class Traversal {
 	 * By default sets the view to be the same as that of the parent.
 	 * @param Dispatchable
 	 */
-	function enter(&$dispatchable) {
+	function enter($dispatchable) {
 		$name = $dispatchable->getName();
 		//debug('enter', $name);
-		$te = new TraversalEntry;
+		$te = new TraversalEntry($name, $dispatchable);
 		$te->name = $name;
-		$te->dispatchable = &$dispatchable;
+		$te->dispatchable = $dispatchable;
 
-		// Current State
+		// Current state
 		$this->_currentState = null;
 
-		// Current action and path
-		$te->action = null;
-		$action = &$this->_targetPath->get($this->_level);
-		if ($action) {
-			if ($action->getName() == $name) {
-				$this->_path->push($action);
-				$te->action = &$action;
-			} else {
-				$this->_path->push( new Action($name));
-			}
-		} else {
-			$this->_path->push( new Action($name));
+		// Current part path
+		$this->_path->push($name);
+		if ($this->_path->equal($this->_targetPath)) {
+			$te->command = $this->_urlMapper->readCommand();
 		}
 
-		$this->_traversal[] = &$te;
+		$this->_traversal[] = $te;
 		$this->_level++;
-		$this->_current = &$te;
+		$this->_current = $te;
 	}
 
-	function leave(&$dispatchable) {
+	function leave($dispatchable) {
 		$this->_currentState = null;
 
 		$this->_path->pop();
@@ -341,7 +329,7 @@ class Traversal {
 		if ($this->_level > 0) {
 			// Down the level
 			$this->_level--;
-			$this->_current = &$this->_traversal[$this->_level];
+			$this->_current = $this->_traversal[$this->_level];
 			// Pop off the traversal
 			array_pop($this->_traversal);
 		}

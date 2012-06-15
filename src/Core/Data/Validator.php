@@ -26,7 +26,7 @@ class ValidRule {
 	 * Adds the name of the Control to the Validator if this Control is required.
 	 * @param Validator
 	 */
-	function addRequired(&$validator) {
+	function addRequired($validator) {
 	}
 
 	/**
@@ -34,7 +34,7 @@ class ValidRule {
 	 * @param DataSpace
 	 * @return boolean true if valid.
 	 */
-	function checkValid(&$keySpace) {
+	function checkValid($keySpace) {
 		return false;
 	}
 
@@ -138,7 +138,7 @@ class Validator {
 	 * @return boolean true if valid.
 	 * @todo add ref back to validator or other error notification store in ->checkValid.
 	 */
-	function checkValid(&$keySpace) {
+	function checkValid($keySpace) {
 		$ret = true;
 		$this->errors_ = array();
 		for ($i = 0; $i < count($this->rules_); $i++) {

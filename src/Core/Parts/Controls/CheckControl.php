@@ -12,7 +12,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/control.php');
+require_once(SGF_CORE . 'Controller/Control.php');
 
 /**
  * A CheckControl
@@ -31,7 +31,7 @@ class CheckControl extends Control {
 	 * @param string
 	 * @param integer
 	 */
-	function __construct($name, $viewProvider, $position, &$form, $id, $label) {
+	function __construct($name, $viewProvider, $position, $form, $id, $label) {
 		parent::__construct($name, $viewProvider, $position, $form, $id, $label);
 	}
 

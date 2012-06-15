@@ -13,11 +13,11 @@
 
 /**
  */
-require_once(SGF_CORE . 'Parts/std/form.php');
+require_once(SGF_CORE . 'Parts/Std/Form.php');
 
 /**
  * JQForm is an jQuery implementations of a web Form.
- * It is based on the standard php Form part in parts/std/form.php
+ * It is based on the standard php Form part in parts/Std/Form.php
  * @see Form
  * @package		ARK
  * @subpackage	Parts
@@ -45,7 +45,7 @@ class JQForm extends Form {
 	 */
 	function onAction($e, $t) {
 		$ret = false;
-		$a = $t->getAction();
+		$a = $t->getCommand();
 		$op = $a->get(0);
 		$primary = $a->get(1);
 		// get args
@@ -98,7 +98,7 @@ class JQForm extends Form {
 	function onRender($e, $t) {
 		$op = '';
 		$primary = '';
-		$a0 = $t->getAction();
+		$a0 = $t->getCommand();
 		if ($a0) {
 			$op = $a0->get(0);
 			$primary = $a0->get(1);
@@ -112,7 +112,7 @@ class JQForm extends Form {
 
 		$v->pushText('NAME', $this->_name);
 
-		$url = $t->buildURLByAction($a1);
+		$url = $t->urlFromCommand($a1);
 		$v->pushText('ACTION', $url);
 
 		$def = '<input type="submit" name="default" value="" style="display: none;" />';

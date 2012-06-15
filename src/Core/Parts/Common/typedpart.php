@@ -17,7 +17,7 @@
 /**
  */
 require_once(SGF_CORE . 'Data/keyspaceiterator.php');
-require_once(SGF_CORE . 'Controller/part.php');
+require_once(SGF_CORE . 'Controller/Part.php');
 
 /**
  * Renders labels to the view from the schema
@@ -71,7 +71,7 @@ class TypedLabels extends Part {
 	 * @see onRender
 	 * @param Traversal
 	 */
-	function onRenderLeave(&$t) {
+	function onRenderLeave($t) {
 	}
 
 }
@@ -164,7 +164,7 @@ class TypedKeySpacePart extends Part {
 	 * @see onRender
 	 * @param Traversal
 	 */
-	function onRenderLeave(&$t) {
+	function onRenderLeave($t) {
 	}
 
 }

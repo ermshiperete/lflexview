@@ -13,8 +13,8 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
-require_once(SGF_CORE . 'Data/accessor.php');
+require_once(SGF_CORE . 'Controller/Part.php');
+require_once(SGF_CORE . 'Data/Accessor.php');
 
 /**
  * @package		ARK

@@ -13,7 +13,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/control.php');
+require_once(SGF_CORE . 'Controller/Control.php');
 
 /**
  * A TextControl
@@ -35,7 +35,7 @@ class DateComboControl extends Control {
 	 * @param string
 	 * @param integer
 	 */
-	function __construct($name, $viewProvider, $position, &$form, $id, $label, $size) {
+	function __construct($name, $viewProvider, $position, $form, $id, $label, $size) {
 		parent::__construct($name, $viewProvider, $position, $form, $id, $label);
 		$this->_size = $size;
 		$this->_months = array();

@@ -14,7 +14,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/actionpath.php');
+require_once(SGF_CORE . 'Controller/ActionPath.php');
 
 /**
  * EventQueue provides the FrontController with services for managing multiple events.

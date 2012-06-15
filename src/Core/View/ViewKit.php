@@ -35,7 +35,7 @@ class ViewKit {
 		}
 		switch ($driver) {
 			case 'pat':
-				$f = 'View/pat/patkit.php';
+				$f = 'View/Pat/Patkit.php';
 				$c = 'PatKit';
 				break;
 			case 'xtpl':
@@ -43,7 +43,7 @@ class ViewKit {
 				$c = 'XtplKit';
 				break;
 			case 'php':
-				$f = 'View/php/phpkit.php';
+				$f = 'View/Php/Phpkit.php';
 				$c = 'PhpKit';
 				break;
 		}
@@ -64,7 +64,7 @@ class ViewKit {
 	static function singleton() {
 		$ret = null;
 		if (isset($GLOBALS['_viewkit']['active'])) {
-			$ret = &$GLOBALS['_viewkit']['active'];
+			$ret = $GLOBALS['_viewkit']['active'];
 		} else {
 			Error::err(__FILE__, __LINE__, 'ViewKit is not connected to a driver, consider ViewKit::connect in your App::init() in app.php');
 		}
@@ -83,7 +83,7 @@ class ViewKit {
 	static function viewFromCache($name) {
 		$ret = null;
 		if (isset($GLOBALS['_viewcache'][$name])) {
-			$ret = &$GLOBALS['_viewcache'][$name];
+			$ret = $GLOBALS['_viewcache'][$name];
 		}
 		return $ret;
 	}

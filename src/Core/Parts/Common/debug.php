@@ -14,8 +14,8 @@
 /**
  */
 require_once(SGF_CORE . 'Error.php');
-require_once(SGF_CORE . 'Util/debug.php');
-require_once(SGF_CORE . 'Controller/part.php');
+require_once(SGF_CORE . 'Util/Debug.php');
+require_once(SGF_CORE . 'Controller/Part.php');
 
 /**
  * @package		ARK
@@ -71,7 +71,7 @@ class DebugPart extends Part {
 	 * @param mixed
 	 * @access private
 	 */
-	function put(&$view, $tag, $value) {
+	function put($view, $tag, $value) {
 		assert(is_a($view, 'View'));
 		$output = print_r($value, true);
 		$view->pushText($tag, $output);

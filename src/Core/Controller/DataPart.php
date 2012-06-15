@@ -12,7 +12,7 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/part.php');
+require_once (SGF_CORE.'Controller/Part.php');
 
 /**
  * A DataPart establishes a new data context in the traversal.

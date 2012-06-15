@@ -36,7 +36,7 @@ class DataPool {
 	public static function getSpace($name) {
 		$ret = NULL;
 		if (isset($GLOBALS['_dataPool'][$name])) {
-			$ret = &$GLOBALS['_dataPool'][$name];
+			$ret = $GLOBALS['_dataPool'][$name];
 		}
 		return $ret;
 	}

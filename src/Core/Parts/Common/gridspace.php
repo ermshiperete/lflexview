@@ -13,7 +13,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
+require_once(SGF_CORE . 'Controller/Part.php');
 
 /**
  * Renders DataSpace data based on type information in the Schema
@@ -100,7 +100,7 @@ class TypedGridSpace extends Part {
 	 */
 	function onRender($e, $t) {
 		$v = $t->viewGet();
-		$a0 = $t->getAction();
+		$a0 = $t->getCommand();
 		if ($a0) {
 			$id = $a0->get(0);
 		}
@@ -126,7 +126,7 @@ class TypedGridSpace extends Part {
 	 * @see onRender
 	 * @param Traversal
 	 */
-	function onRenderLeave(&$t) {
+	function onRenderLeave($t) {
 	}
 
 }

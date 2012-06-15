@@ -13,10 +13,10 @@
 
 /**
  */
-//require_once(SGF_CORE . 'Controller/actionpath.php');
-//require_once(SGF_CORE . 'Data/arrayspace.php');
-//require_once(SGF_CORE . 'Data/dotpath.php');
-//require_once(SGF_CORE . 'Data/session.php');
+//require_once(SGF_CORE . 'Controller/ActionPath.php');
+//require_once(SGF_CORE . 'Data/Arrayspace.php');
+//require_once(SGF_CORE . 'Data/Dotpath.php');
+//require_once(SGF_CORE . 'Data/Session.php');
 require_once(SGF_CORE.'Controller/IURLMapper.php');
 
 /**
@@ -65,6 +65,9 @@ class URLMapper implements IURLMapper {
 	 * @return ActionPath
 	 */
 	function readPartPath() {
+		if (!isset($_REQUEST['act'])) {
+			return NULL;
+		}
 		$path = $_REQUEST['act'];
 		$paths = explode('.', $path);
 		return new ActionPath($paths);
@@ -74,24 +77,43 @@ class URLMapper implements IURLMapper {
 	 * @param ActionPath $actionPath
 	 * @return void
 	 */
-	function writePartPath($actionPath) {
-		$paths = implode('.', $actionPath->getPaths());
-		$path = 'act=' . $paths;
-		return $path;
+	function writePartPath($partPath) {
+		$paths = implode('.', $partPath->getPaths());
+		$url = 'act=' . $paths;
+		return $url;
 	}
 	
 	/**
 	 * @return Command
 	 */
 	function readCommand() {
-		
+		if (!isset($_REQUEST['cmd'])) {
+			return NULL;
+		}
+		$tokens = explode(':', $_REQUEST['cmd']);
+		return new Command($tokens[0], array_slice($tokens, 1));
 	}
 
 	/**
 	 * @param Command $command
-	 * @return void
+	 * @return string
 	 */
 	function writeCommand($command) {
+		if ($command == NULL) {
+			return '';
+		}
+		$url = '&cmd=' . $command->name;
+		foreach ($command->args as $arg) {
+			$url .= ':' . $arg;
+		}
+		return $url;
+	}
+	
+	/**
+	 * @see IURLMapper::write()
+	 */
+	function write($partPath, $command) {
+		return $this->_base . '?' . $this->writePartPath($partPath) . $this->writeCommand($command);
 	}
 
 }

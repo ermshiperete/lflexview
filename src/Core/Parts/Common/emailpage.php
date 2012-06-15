@@ -14,7 +14,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
+require_once(SGF_CORE . 'Controller/Part.php');
 
 /**
  * A EmailPage is a controller that produces a View.
@@ -93,7 +93,7 @@ class EmailPage extends Part {
 	 * Called by Traversal::enter prior to rendering the parts of this page.
 	 * @access protected
 	 */
-	function onRenderEnter(&$t) {
+	function onRenderEnter($t) {
 		// Set the view in the traversal
 		$t->viewSet($this->_view);
 
@@ -106,7 +106,7 @@ class EmailPage extends Part {
 	 * This delivers the output to the output stream by calling patTemplate::displayParsedTemplate.
 	 * @access protected
 	 */
-	function onRenderLeave(&$t) {
+	function onRenderLeave($t) {
 		$totalTime = $this->getTime() - $this->startTime_;
 		$this->_view->pushText('TIME', round($totalTime, 3));
 		// Render the template

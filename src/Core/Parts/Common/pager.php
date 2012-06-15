@@ -13,8 +13,8 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
-require_once(SGF_CORE . 'Data/accessor.php');
+require_once(SGF_CORE . 'Controller/Part.php');
+require_once(SGF_CORE . 'Data/Accessor.php');
 
 /**
  * @package		ARK
@@ -72,7 +72,7 @@ class Pager extends Part {
 			$start = $this->start_;
 			$size = $this->size_;
 		}
-		$action = $t->getAction();
+		$action = $t->getCommand();
 		// calculate
 		switch ($action->get(0)) {
 			case 'prev':
@@ -115,9 +115,9 @@ class Pager extends Part {
 		}
 		// render pager
 		$v->pushText('COUNT', $this->count_);
-		$prev = $t->buildURLByAction(new Action($this->_name . ':prev'));
+		$prev = $t->urlFromCommand(new Action($this->_name . ':prev'));
 		$v->pushText('PREV_ACTION', $prev);
-		$next = $t->buildURLByAction(new Action($this->_name . ':next'));
+		$next = $t->urlFromCommand(new Action($this->_name . ':next'));
 		$v->pushText('NEXT_ACTION', $next);
 
 		// set pager in the traversal data

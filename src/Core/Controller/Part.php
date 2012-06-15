@@ -13,7 +13,7 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/deck.php');
+require_once (SGF_CORE.'Controller/Deck.php');
 require_once (SGF_CORE.'View/IViewProvider.php');
 
 /**
@@ -103,12 +103,11 @@ class Part extends Deck {
 	}
 
 	function renderArguments($t) {
-		$a = $t->getAction();
-		if ($a) {
-			$c = $a->count();
+		$command = $t->getCommand();
+		if ($command) {
+			$c = count($command->args);
 			for ($i = 0; $i < $c; $i++) {
-				$arg = $a->get($i);
-				$this->_view->pushText("_Arg$i", $arg);
+				$this->_view->pushText("_Arg$i", $command->args[$i]);
 			}
 		}
 	}

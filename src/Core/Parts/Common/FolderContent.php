@@ -13,7 +13,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
+require_once(SGF_CORE . 'Controller/Part.php');
 
 /**
  * A FileContent part

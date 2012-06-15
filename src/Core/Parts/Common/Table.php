@@ -13,7 +13,7 @@
 /**
  */
 require_once (SGF_CORE.'Data/IDataSpace.php');
-require_once (SGF_CORE.'Controller/part.php');
+require_once (SGF_CORE.'Controller/Part.php');
 
 /**
  */
@@ -72,9 +72,9 @@ class Table extends DataPart {
 		$this->_body = new TableBody('tablebody', 'tablebody', 'BODY', new TableAccessor($it));
 
 		//        $this->addChild($this->_filter);
-		//        $this->_filter->_dispatchables[0] = &$this->_pager;
-		//        $this->_filter->_dispatchables[1] = &$this->_header;
-		//        $this->_filter->_dispatchables[2] = &$this->_body;
+		//        $this->_filter->_dispatchables[0] = $this->_pager;
+		//        $this->_filter->_dispatchables[1] = $this->_header;
+		//        $this->_filter->_dispatchables[2] = $this->_body;
 
 	}
 
@@ -82,7 +82,7 @@ class Table extends DataPart {
 	 * Adds a cell to the header row
 	 * @param Dispatchable
 	 */
-	function addHeaderCell(&$d) {
+	function addHeaderCell($d) {
 		$this->_header->addChild($d);
 	}
 
@@ -90,7 +90,7 @@ class Table extends DataPart {
 	 * Adds a cell to the body row
 	 * @param Dispatchable
 	 */
-	function addBodyCell(&$d) {
+	function addBodyCell($d) {
 		$this->_body->addChild($d);
 	}
 
@@ -107,9 +107,9 @@ class Table extends DataPart {
 	 * This will remove the previous pager and all it's children.
 	 * @param Dispatchable
 	 */
-	function setPager(&$pager) {
-		$this->_pager = &$pager;
-		$this->_filter->_dispatchables[0] = &$this->_pager;
+	function setPager($pager) {
+		$this->_pager = $pager;
+		$this->_filter->_dispatchables[0] = $this->_pager;
 	}
 
 	/**
@@ -117,9 +117,9 @@ class Table extends DataPart {
 	 * This will remove the previous header and all it's children.
 	 * @param Dispatchable
 	 */
-	function setHeader(&$header) {
-		$this->_header = &$header;
-		$this->_filter->_dispatchables[1] = &$this->_header;
+	function setHeader($header) {
+		$this->_header = $header;
+		$this->_filter->_dispatchables[1] = $this->_header;
 	}
 
 	/**
@@ -127,9 +127,9 @@ class Table extends DataPart {
 	 * This will remove the previous body and all it's children.
 	 * @param Dispatchable
 	 */
-	function setBody(&$body) {
-		$this->_body = &$body;
-		$this->_filter->_dispatchables[2] = &$this->_body;
+	function setBody($body) {
+		$this->_body = $body;
+		$this->_filter->_dispatchables[2] = $this->_body;
 	}
 
 	/**
@@ -181,14 +181,14 @@ class TableBody extends Part {
 	 * @param Traversal
 	 */
 	function onRender($e, $t) {
-		$v = &$t->viewGet();
-		$it = &$this->accessor_->getIterator($t);
+		$v = $t->viewGet();
+		$it = $this->accessor_->getIterator($t);
 		if ($it != null) {
 			$count = 0;
 			$mod = 0;
 			for ($it->rewind(); $it->isValid(); $it->next()) {
 				// The table expects
-				$keyspace = &$it->current();
+				$keyspace = $it->current();
 				$t->dataSet('keyspace', $keyspace);
 				$primary = $keyspace->getID();
 				$t->dataSet('primary', $primary);
@@ -211,7 +211,7 @@ class TableBody extends Part {
 	 * @see onRender
 	 * @param Traversal
 	 */
-	function onRenderLeave(&$t) {
+	function onRenderLeave($t) {
 	}
 
 }
@@ -234,8 +234,8 @@ class TableRow extends Part {
 	 * @param Traversal
 	 */
 	function onRender($e, $t) {
-		$v = &$t->viewGet();
-		$space = &$t->dataGet('keyspace');
+		$v = $t->viewGet();
+		$space = $t->dataGet('keyspace');
 		if ($space) {
 			$it = new KeySpaceIterator($space);
 			for ($it->rewind(); $it->isValid(); $it->next()) {
@@ -252,7 +252,7 @@ class TableRow extends Part {
 	 * @see onRender
 	 * @param Traversal
 	 */
-	function onRenderLeave(&$t) {
+	function onRenderLeave($t) {
 	}
 
 }
@@ -308,17 +308,17 @@ class TableKeyAction extends Part {
 	 * @param Traversal
 	 */
 	function onRender($e, $t) {
-		$v = &$t->viewGet();
-		$space = &$t->dataGet('keyspace');
+		$v = $t->viewGet();
+		$space = $t->dataGet('keyspace');
 		if ($space) {
 			if ($this->actionKey_ == 'primary') {
 				$actionValue = $t->dataGet('primary');
 			} else {
 				$actionValue = $space->get($this->actionKey_);
 			}
-			$action = &$this->actionpath_->last();
+			$action = $this->actionpath_->last();
 			$action->set($this->keyPos_, $actionValue);
-			$url = $t->buildURLByPath($this->actionpath_);
+			$url = $t->urlFromPath($this->actionpath_);
 			$v->pushText('ACTION', $url);
 			$value = $space->get($this->valueKey_);
 			$v->pushText('BODY', $value);
@@ -386,17 +386,17 @@ class TableAction extends Part {
 	 * @param Traversal
 	 */
 	function onRender($e, $t) {
-		$v = &$t->viewGet();
-		$space = &$t->dataGet('keyspace');
+		$v = $t->viewGet();
+		$space = $t->dataGet('keyspace');
 		if ($space) {
 			if ($this->key_ == 'primary') {
 				$value = $t->dataGet('primary');
 			} else {
 				$value = $space->get($this->key_);
 			}
-			$action = &$this->actionpath_->last();
+			$action = $this->actionpath_->last();
 			$action->set($this->keyPos_, $value);
-			$url = $t->buildURLByPath($this->actionpath_);
+			$url = $t->urlFromPath($this->actionpath_);
 			$v->pushText('ACTION', $url);
 			$v->pushText('BODY', $this->label_);
 			$v->pushText('IMAGE', $this->image_);
@@ -447,7 +447,7 @@ class TableDeleteAction extends TableAction {
 	 */
 	function onAction($e, $t) {
 		$ret = false;
-		$a = $t->getAction();
+		$a = $t->getCommand();
 		if ($a) {
 			$op = $a->get(0);
 			$primary = $a->get(1);

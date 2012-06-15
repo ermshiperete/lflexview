@@ -212,7 +212,7 @@ interface IDataSpace extends IteratorAggregate {
 	 * @param Traversal $t
 	 * @return void
 	 */
-	public function leave(&$t);
+	public function leave($t);
 
 }
 ;

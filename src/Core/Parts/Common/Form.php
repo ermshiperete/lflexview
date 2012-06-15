@@ -12,8 +12,9 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/actionpath.php');
-require_once (SGF_CORE.'Controller/part.php');
+require_once (SGF_CORE.'Controller/ActionPath.php');
+require_once (SGF_CORE.'Controller/Command.php');
+require_once (SGF_CORE.'Controller/Part.php');
 require_once (SGF_CORE.'Data/IDataSpace.php');
 
 /**
@@ -209,13 +210,12 @@ class Form extends Part {
 	 */
 	function onAction($e, $t) {
 		$ret = FALSE;
-		$a = $t->getAction();
-		$op = $a->get(0);
-		$primary = $a->get(1);
+		$command = $t->getCommand();
+		$primary = count($command->args) > 0 ? $command->args[0] : NULL;
 		// get args
-		switch ($op) {
+		switch ($command->name) {
 			case 'write':
-				processDataFromControls($t);
+				$this->processDataFromControls($t);
 				// Check for the default button
 				if ($this->_dataSpace->hasKey('default')) {
 					$this->_dataSpace->set($this->_defaultControl, 'default');
@@ -264,7 +264,7 @@ class Form extends Part {
 		/* TODO Move this form dataspace render reading code into say a UrlDataProvider
 		 $op = '';
 		 $primary = '';
-		 $a0 = $t->getAction();
+		 $a0 = $t->getCommand();
 		 if ($a0) {
 		 $op = $a0->get(0);
 		 $primary = $a0->get(1);
@@ -273,13 +273,13 @@ class Form extends Part {
 		$t->dataSet($this->_dataSpace);
 
 		$v = $this->_view;
-		$a1 = new Action($this->_name.':write:'/* TODO .$primary*/);
+		$command = new Command('write'/* TODO .$primary*/);
 
 		$v->pushText('Title', $this->_title);
 		$v->pushText('Name', $this->_name);
 
 		//        $url = '';
-		$url = $t->buildURLByAction($a1);
+		$url = $t->urlFromCommand($command);
 		$v->pushText('Action', $url);
 
 		$def = '<input type="submit" name="default" value="" style="display: none;" />';

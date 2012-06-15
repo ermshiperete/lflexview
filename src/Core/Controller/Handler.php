@@ -85,7 +85,7 @@ class Handler extends DispatchableDecorator {
  }
 
  function isEqual($e, $t) {
- return $this->_name == $t->getActionName();
+ return $this->_name == $t->getCommandName();
  }
 
  };

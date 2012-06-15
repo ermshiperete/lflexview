@@ -89,8 +89,8 @@ class PhpView implements IView {
 		}
 	}
 
-	function renderToParent(&$t, $position) {
-		$parent = &$t->getParentView();
+	function renderToParent($t, $position) {
+		$parent = $t->getParentView();
 		if ($parent) {
 			$content = $this->renderToString();
 			$parent->pushText($position, $content);

@@ -12,7 +12,7 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/part.php');
+require_once (SGF_CORE.'Controller/Part.php');
 
 /**
  * A Control is a Part that exists within a Form.
@@ -129,7 +129,7 @@ class Control extends Part {
 	/*
 	 function getType() {
 	 $ret = DT_Unknown;
-	 $schema = &$this->_form->getSchema();
+	 $schema = $this->_form->getSchema();
 	 if ($schema) {
 	 $ret = $schema->getType($this->name);
 	 }

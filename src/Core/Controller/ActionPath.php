@@ -40,6 +40,27 @@ class ActionPath { // TODO Better name is TraversalPath
 		$this->_context = $context;
 	}
 
+	/**
+	 * @param IURLMapper $urlMapper
+	 * @return ActionPath
+	 */
+	static function fromURLMapper($urlMapper) {
+		return $urlMapper->readPartPath();
+	}
+	
+	static function fromString($partPath) {
+		$paths = explode('/', $partPath);
+		return new ActionPath($paths);
+	}
+	
+	/**
+	 * @param ActionPath $other
+	 * @return bool
+	 */
+	public function equal($other) {
+		return $this->_paths == $other->_paths;
+	}
+	
 	function getPaths() {
 		return $this->_paths;
 	}
@@ -182,11 +203,11 @@ class ActionPath { // TODO Better name is TraversalPath
 	}
 
 	/**
-	 * Pushes Action $action onto the end of the action array.
-	 * @param Action
+	 * Pushes PartPath $partPath onto the end of the paths array.
+	 * @param string
 	 */
-	function push($action) {
-		$this->_paths[] = $action;
+	function push($partPath) {
+		$this->_paths[] = $partPath;
 	}
 
 	/**

@@ -14,8 +14,8 @@
 
 /**
  */
-require_once(SGF_CORE . 'Data/dataspace.php');
-require_once(SGF_CORE . 'Data/session.php');
+require_once(SGF_CORE . 'Data/Dataspace.php');
+require_once(SGF_CORE . 'Data/Session.php');
 require_once(SGF_CORE . 'Util/utilpassword.php');
 
 /**

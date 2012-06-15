@@ -12,11 +12,11 @@
 
 /**
  */
-require_once (SGF_CORE.'Controller/deck.php');
-require_once (SGF_CORE.'Data/session.php');
-require_once (SGF_CORE.'Controller/event.php');
-require_once (SGF_CORE.'Controller/eventqueue.php');
-require_once (SGF_CORE.'Controller/traversal.php');
+require_once (SGF_CORE.'Controller/Deck.php');
+require_once (SGF_CORE.'Data/Session.php');
+require_once (SGF_CORE.'Controller/Event.php');
+require_once (SGF_CORE.'Controller/Eventqueue.php');
+require_once (SGF_CORE.'Controller/Traversal.php');
 
 /**
  * Authorised

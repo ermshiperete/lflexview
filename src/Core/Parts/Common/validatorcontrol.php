@@ -13,8 +13,8 @@
 
 /**
  */
-require_once(SGF_CORE . 'Data/arrayiterator.php');
-require_once(SGF_CORE . 'Controller/control.php');
+require_once(SGF_CORE . 'Data/Arrayiterator.php');
+require_once(SGF_CORE . 'Controller/Control.php');
 
 /**
  * ValidatorErrorControl
@@ -25,7 +25,7 @@ class ValidatorErrorControl extends Control {
 	/**
 	 * Constructor
 	 */
-	function __construct($name, $viewProvider, $position, &$form) {
+	function __construct($name, $viewProvider, $position, $form) {
 		parent::__construct($name, $viewProvider, $position, $form, null, null);
 	}
 
@@ -62,7 +62,7 @@ class ValidatorErrorControl extends Control {
 	 * Do nothing as we have rendered the View in onRender
 	 * @param Traversal
 	 */
-	function onRenderLeave(&$t) {
+	function onRenderLeave($t) {
 	}
 
 }

@@ -39,6 +39,13 @@ interface IURLMapper
 	 * @return void
 	 */
 	function writeCommand($command);
+	
+	/**
+	 * @param ActionPath $partPath
+	 * @param Command $command
+	 */
+	function write($partPath, $command);
+	
 }
 
 ?>

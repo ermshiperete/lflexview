@@ -106,7 +106,7 @@ class Deck extends Dispatcher {
 
 			case EVT_Render:
 				if ($this->_followMode == DECK_FollowAction) {
-					$ret = ($this->_name == $t->getNextActionName());
+					$ret = ($this->_name == $t->actionGetNextName());
 				} else {
 					$ret = true;
 				}

@@ -13,7 +13,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
+require_once(SGF_CORE . 'Controller/Part.php');
 
 /**
  * @package		ARK
@@ -69,7 +69,7 @@ class ActionPart extends Part {
 		if ($this->image_) {
 			$v->pushText('IMAGE', $this->image_);
 		}
-		$url = $t->buildURLByPath($this->actionPath_);
+		$url = $t->urlFromPath($this->actionPath_);
 		$v->pushText('ACTION', $url);
 		parent::onRender($e, $t);
 	}

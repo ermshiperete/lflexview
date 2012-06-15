@@ -14,7 +14,7 @@
  */
 require_once (SGF_CORE.'Data/IDataStore.php');
 require_once (SGF_CORE.'Data/TestValueMapper.php');
-require_once (SGF_CORE.'Data/schema.php');
+require_once (SGF_CORE.'Data/Schema.php');
 
 /**
  *

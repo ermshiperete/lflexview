@@ -13,8 +13,8 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
-require_once(SGF_CORE . 'Data/arrayiterator.php');
+require_once(SGF_CORE . 'Controller/Part.php');
+require_once(SGF_CORE . 'Data/Arrayiterator.php');
 
 /**
  * Value is a Part that pushes key value pairs into the View

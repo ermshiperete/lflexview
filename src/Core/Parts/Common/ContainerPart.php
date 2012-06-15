@@ -12,7 +12,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/part.php');
+require_once(SGF_CORE . 'Controller/Part.php');
 
 /**
  * @package		ARK
@@ -55,7 +55,7 @@ class ContainerPart extends Part {
 		$this->_view->pushData('Body', $childRenders);
 	}
 
-	//	function onRenderLeave(&$t) {
+	//	function onRenderLeave($t) {
 	//		 Do nothing to override the default behaviour of Part
 	//	}
 

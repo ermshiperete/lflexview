@@ -12,7 +12,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'Controller/control.php');
+require_once(SGF_CORE . 'Controller/Control.php');
 
 /**
  * A TextControl
@@ -33,14 +33,14 @@ class TextControl extends Control {
 	 * @param string
 	 * @param integer
 	 */
-	function __construct($name, $viewProvider, $position, &$form, $id, $label, $size) {
+	function __construct($name, $viewProvider, $position, $form, $id, $label, $size) {
 		parent::__construct($name, $viewProvider, $position, $form, $id, $label);
 		$this->_size = $size;
 	}
 
 	/**
 	 * Handles the onRender event
-	 * Pushes Label Reqd into the view. Also pushes the HTML input tag as BODY into the view.
+	 * Pushes Label Reqd into the view. Also pushes the HTML input tag as Body into the view.
 	 * @param Event
 	 * @param Traversal
 	 */
@@ -76,7 +76,7 @@ class TextArea extends Control {
 	 * @param integer
 	 * @param integer
 	 */
-	function __construct($name, $viewProvider, $position, &$form, $id, $label, $rows, $cols) {
+	function __construct($name, $viewProvider, $position, $form, $id, $label, $rows, $cols) {
 		parent::__construct($name, $viewProvider, $position, $form, $id, $label);
 		$this->_rows = $rows;
 		$this->_cols = $cols;
@@ -118,7 +118,7 @@ class PasswordControl extends Control {
 	 * @param string
 	 * @param integer
 	 */
-	function __construct($name, $viewProvider, $position, &$form, $id, $label, $size) {
+	function __construct($name, $viewProvider, $position, $form, $id, $label, $size) {
 		parent::__construct($name, $viewProvider, $position, $form, $id, $label);
 		$this->_size = $size;
 	}
