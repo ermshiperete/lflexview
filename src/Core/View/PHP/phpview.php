@@ -113,6 +113,7 @@ class PhpView implements IView {
 	 */
 	function renderToString($scope = null) {
 		extract($this->_vars); // Extract the vars to local namespace
+		$urlMapper = ControllerKit::urlMapper();
 		ob_start();
 		// Including the file will render it directly. Templates are mostly html
 		include ($this->_filePath);

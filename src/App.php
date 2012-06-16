@@ -6,6 +6,7 @@ require_once(SGF_CORE.'Controller/ControllerKit.php');
 require_once(SGF_CORE.'Controller/FrontController.php');
 require_once(SGF_CORE.'Data/DataKit.php');
 require_once(SGF_CORE.'Data/SimpleValueSpace.php');
+require_once(SGF_CORE.'Data/ListSpace.php');
 require_once(SGF_CORE.'Parts/PartKit.php');
 require_once(SGF_CORE.'View/ViewKit.php');
 
@@ -33,7 +34,7 @@ class Application extends FrontController
 		
 		$page->addChild(PartKit::handler('Home', 'Parts/Home.php'));
 		$page->addChild(PartKit::handler('SearchResults', 'Parts/SearchResults.php'));
-		$page->addChild(PartKit::handler('LexEntry', 'Parts/LexEntry.php'));
+		$page->addChild(PartKit::handler('LexicalEntry', 'Parts/LexicalEntry.php'));
 		
 		$this->addChild($page);
 	}

@@ -16,7 +16,7 @@ class GetWordsForAutoSuggestCommand
 		$this->_search = $search;
 		$this->_indexFrom = $indexFrom;
 		$this->_indexTo = $indexTo;
-		$this->_dto = new \SimpleListSpace();
+		$this->_dto = new \ListSpace();
 	}
 
 	function execute() {
@@ -74,7 +74,7 @@ class GetWordsForAutoSuggestCommand
 
 		$guid = (string)$node['guid'];
 		$lexicalForms = $node->{'lexical-unit'};
-		$entryDTO = new \SimpleListSpace();
+		$entryDTO = new \ListSpace();
 		$entryDTO->setID($guid);
 		$multiText = $this->readMultiText($lexicalForms);
 		$entryDTO->setSpace('lexical-unit', $multiText);

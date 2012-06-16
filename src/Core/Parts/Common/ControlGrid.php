@@ -33,7 +33,7 @@ class ControlGrid extends Part {
 	/**
 	 * Handles the onRender event
 	 * pushes the following variables into the view
-	 *   - {BODY} an array of the child renders
+	 *   - {Body} an array of the child renders
 	 * @param Event
 	 * @param Traversal
 	 */

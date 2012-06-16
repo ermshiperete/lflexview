@@ -21,7 +21,7 @@ class ListSpace extends SimpleListSpace {
 	/**
 	 *
 	 */
-	function __construct($dataMapper, $array = array()) {
+	function __construct($dataMapper = NULL, $array = array()) {
 		parent::__construct($dataMapper, $array);
 		$this->_metaSpaces = array();
 		$this->_metaSpaces[DataSpaceBase::Meta] = new SimpleValueSpace();
