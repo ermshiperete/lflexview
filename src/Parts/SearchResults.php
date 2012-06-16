@@ -6,6 +6,12 @@ class SearchResults extends Part{
 		parent::__construct('SearchResults', ViewKit::providerFromCommon('SearchResults'));
 	}
 	
+	function onRender($e, $t) {
+		$space = $t->dataGet();
+		$this->_view->pushData('SearchResults', $space);
+		parent::onRender($e, $t);
+	}
+	
 }
 
 ?>

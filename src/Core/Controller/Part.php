@@ -48,7 +48,7 @@ class Part extends Deck {
 	 * @param boolean
 	 * @param string
 	 */
-	function __construct($name, $viewProvider, $position = 'BODY', $hasFollowAction = DECK_AlwaysRender , $context = null) {
+	function __construct($name, $viewProvider, $position = 'Body', $hasFollowAction = DECK_AlwaysRender , $context = null) {
 		parent::__construct($name, $hasFollowAction, $context);
 		$this->_view = null;
 		$this->_viewProvider = $viewProvider;

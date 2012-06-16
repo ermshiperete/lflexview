@@ -27,7 +27,7 @@ class SearchForm extends Form
 		$command = new commands\GetWordsForAutoSuggestCommand(APP_LiftFilePath, 'th', $search, 0, 50);
 		$space = $command->execute();
 		$t->dataSet($space);
-		EventQueue::singleton()->addEvent(new Event(EVT_Render, ActionPath::fromString('Home/SearchResults')));
+		EventQueue::singleton()->addEvent(new Event(EVT_Render, ActionPath::fromString('Page/SearchResults')));
 	}
 	
 }

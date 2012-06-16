@@ -1,12 +1,20 @@
 <?php
 
 $rootPath = dirname(__FILE__) . '/';
+define('APP_Root', $rootPath);
 
-define('AppPath', $rootPath);
+// Configure these language to change what is displayed.  They should match the 'lang' tags in your LIFT file.
+define('LANG_Vernacular', 'th');
+define('LANG_IPA',        'th-fonipa');
+define('LANG_Other',      'en');
 
-define('SGF_CORE', $rootPath . 'Core/');
-define('ERROR_PathFilter', '/var/www/host/languageforge/LFDictionaryView/src/');
-
+// Path to the LIFT file
 define('APP_LiftFilePath', '/var/www/host/languageforge/LFDictionaryView/test/Data/tha-food.lift');
+
+/* You shouldn't need to change anything below this line. */
+
+define('SGF_CORE', APP_Root.'Core/');
+define('ERROR_PathFilter', APP_Root);
+//define('ERROR_PathFilter', '/var/www/host/languageforge/LFDictionaryView/src/');
 
 ?>
