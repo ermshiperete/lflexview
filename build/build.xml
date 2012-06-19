@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="lexicon-view" default="build" basedir="..">
+
+	<property name="application.name" value="lexicon-view" />
+
+	<property name="build.number" value="0.0.0.0" />
+	<property name="build.output" value="output" />
+	<property name="build.webroot" value="src" />	
+	<property name="build.packageFile" value="${build.output}/${application.name}.tgz" />
+	<property name="build.installPath" value="/var/www/dictionaryview.local" />
+	
+	<target name="clean" depends="">
+		<delete dir="${build.output}" quiet="true" />
+	</target>
+
+	<target name="cleanInstall" depends="">
+		<delete dir="${build.installPath}" quiet="true" />
+	</target>
+
+	<target name="version">
+		<script language="javascript">
+			<![CDATA[
+			// getting the value
+			buildnumber = project.getProperty("build.number");
+			index = buildnumber.lastIndexOf(".");
+			project.setProperty("version", buildnumber.substring(0, index));
+			]]>
+		</script>
+		<echo>${version}</echo>
+	</target>
+	
+	<target name="prepare">
+		<mkdir dir="${build.output}" />
+	</target>
+
+	<target name="build" depends="" />
+
+	<target name="package" depends="prepare" >
+		<tar 
+			destfile="${build.packageFile}"
+			basedir="${build.webroot}"
+			excludes="${build.packageFile}"
+			longfile="gnu"
+			compression="gzip" />
+	</target>
+
+	<target name="install" depends="package,cleanInstall">
+		<untar src="${build.packageFile}" dest="${build.installPath}" compression="gzip" />
+	</target>
+
+	<!-- Development targets to help developers, not used for production -->
+	<property name="dev.depends.lfbase" location="../LFBase"/>
+	<target name="devCopyBase">
+		<copy todir="${build.webroot}/lf/lfbase" overwrite="true">
+			<fileset dir="${dev.depends.lfbase}/lfbase-server/src/lfbase" />
+		</copy>
+	</target>
+	
+	<property name="dev.depends.lexicon-view" location="../LFDictionaryView"/>
+	<property name="dev.installPath" location="/var/www/dictionaryview.local"/>
+	<property name="dev.hostPath" location="/var/www/host/languageforge/"/>
+	<target name="devCleanInstall">
+		<symlink action="delete" link="${dev.installPath}/web"/> <!-- Deletion of this link seems flakey, don't rely on it CP 2012-06 -->
+	</target>
+	
+	<target name="devInstall">
+		<mkdir dir="${dev.installPath}" />
+		<symlink link="${dev.installPath}/web" resource="${dev.depends.lexicon-view}/src" overwrite="true"/>
+	</target>
+	
+</project>
