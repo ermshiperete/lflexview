@@ -1,1 +1,1 @@
-<?php echo $Label; ?><?php echo $Body; ?>
+<?php echo $Label; ?>&nbsp;<?php echo $Body; ?>

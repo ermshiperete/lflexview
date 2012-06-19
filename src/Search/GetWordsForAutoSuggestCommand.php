@@ -46,7 +46,7 @@ class GetWordsForAutoSuggestCommand
 									//find the closest
 									$similarity = 0.0;
 									$simtext = similar_text($this->_search, $sourceText, &$similarity);
-									if ($similarity >= 80.0) {
+									if ($similarity >= 60.0) {
 										// set the closest match, and shortest distance
 										$closestword[] = $XMLdata;
 									}

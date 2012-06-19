@@ -1,0 +1,89 @@
+@CHARSET "ISO-8859-1";
+
+body, p {
+	font-family: "Segoe UI",Arial Unicode MS, Arial, Tahoma,Verdana, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	line-height: 22px;
+	color: #333;
+}
+
+div#frame {
+	width: 95%;
+	max-width: 1050px;
+	min-width: 965px;
+	border-left: solid 2px 
+	#999;
+	border-right: solid 2px 
+	#999;
+	background-color: 
+	white;
+	margin: auto;
+	padding-left: 25px;
+	min-height: 100%;
+}
+
+div#padding {
+	padding-right: 20px;
+	padding-left: 10px;
+	position: relative;
+}
+
+h2 {
+	font-family: "Segoe UI","Lucida Grande",Geneva,Arial,Verdana,sans-serif;
+	color: #EE651E;
+	font-size: 18px;
+	margin: 0 0 10px 0;
+	padding: 0px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+}
+
+div.meanings {
+	float: right;
+	width: 60%;
+}
+
+div.r0, div.r1 {
+	height: 64px;
+}
+
+div.r0 {
+	width: 99%;
+	border-bottom: #B0BEC7 1px solid;
+	padding: 6px 0px 6px 15px;
+	background-color: #EFF5FC;
+}
+
+div.r1 {
+	width: 99%;
+	background-color: white;
+	border-bottom: #B0BEC7 1px solid;
+	padding: 6px 0px 6px 15px;
+}
+
+.rFirst {
+	border-top: #B0BEC7 1px solid;
+}
+
+h1.headWord {
+	font-weight: normal;
+	font-size: 30px;
+	color: Sblack;
+	line-height: normal;
+}
+
+p.ipa {
+	color: #03F;
+	font-size: 22px;
+}
+
+p.definition {
+	font-size: 18px;
+}
+
+div#senseFrame {
+	padding-left: 16px;
+}
+

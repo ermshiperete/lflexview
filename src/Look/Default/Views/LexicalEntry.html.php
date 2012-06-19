@@ -1,18 +1,23 @@
+<div id="padding">
 <div><?php $lexicalUnit = $LexicalEntry->getSpace('lexicalUnit'); ?>
-<h2>Some Lex Entry</h2>
-<p>guid <?php echo $LexicalEntry->getID(); ?></p>
-<p>th <?php echo $lexicalUnit->get(LANG_Vernacular);?></p>
-<p>th-fonipa <?php echo $lexicalUnit->get(LANG_IPA);?></p>
+<h1 class="headWord"><?php echo $lexicalUnit->get(LANG_Vernacular);?></h1>
+<p class="ipa"><?php echo $lexicalUnit->get(LANG_IPA);?></p>
 <?php $i = 1; $senses = $LexicalEntry->getSpace('senses'); if ($senses) foreach($senses as $sense): ?>
-<?php $definition = $sense->getSpace('definition');?>
-<p>definition <?php echo $definition->get('en'); ?>
 <?php $partOfSpeech = $sense->get('partOfSpeech');?>
-<p>part of speech <?php echo $partOfSpeech; ?>
-<?php $j = 1; $examples = $senses->getSpace('examples'); if ($examples) foreach($examples as $exampleGroup): ?>
+<p class="partOfSpeech">[&nbsp;<?php echo $partOfSpeech; ?>&nbsp;]</p>
+<div id="senseFrame">
+<?php $definition = $sense->getSpace('definition');?>
+<p class="definition"><?php echo $definition->get('en'); ?></p>
+<div class="exampleFrame">
+<h2>Examples</h2>
+<?php $j = 0; $examples = $sense->getSpace('examples'); if ($examples) foreach($examples as $exampleGroup): ?>
 <?php $example = $exampleGroup->getSpace('example'); $translation = $exampleGroup->getSpace('translation'); ?>
-<p>example th <?php echo $example->get(LANG_Vernacular);?></p>
-<p>example th-fonipa <?php echo $example->get(LANG_IPA);?></p>
-<p>translation en <?php echo $translation->get(LANG_Other);?></p>
+<div class="<? echo "r".$j%2; if ($j==0) echo " rFirst"; ?>">
+<?php echo $example->get(LANG_Vernacular); ?>
+</div>
+</div>
 <? $j++; endforeach; ?>
 <? $i++; endforeach; ?>
+</div>
+</div>
 </div>

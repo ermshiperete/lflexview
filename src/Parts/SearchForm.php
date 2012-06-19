@@ -12,7 +12,7 @@ class SearchForm extends Form
 			DataKit::providerFromExistingData(new SimpleValueSpace())
 		);
 		$controlProvider = ViewKit::providerFromCommon('Control');
-		$this->addChild(PartKit::textControl('SearchText', $controlProvider, 'SearchTextControl', $this, 'id', 'Search text', 20));
+		$this->addChild(PartKit::textControl('SearchText', $controlProvider, 'SearchTextControl', $this, 'id', 'Online Dictionary Search', 20));
 		$this->addChild(PartKit::buttonControl('save', ViewKit::providerFromCommon('ControlButton'), 'ButtonControl', $this, 'idb', 'Search'));
 	}
 	
@@ -23,8 +23,9 @@ class SearchForm extends Form
 	 */
 	public function runSave($e, $t) {
 		require_once('Search/GetWordsForAutoSuggestCommand.php');
-		$search = 'ฉู่ฉี่หมูกรแบ';
-		$command = new commands\GetWordsForAutoSuggestCommand(APP_LiftFilePath, 'th', $search, 0, 50);
+		//$search = 'ฉู่ฉี่หมูกรแบ';
+		$search = $this->_dataSpace->get('SearchText');
+		$command = new commands\GetWordsForAutoSuggestCommand(APP_LiftFilePath, LANG_IPA, $search, 0, 50);
 		$space = $command->execute();
 		$t->dataSet($space);
 		EventQueue::singleton()->addEvent(new Event(EVT_Render, ActionPath::fromString('Page/SearchResults')));
