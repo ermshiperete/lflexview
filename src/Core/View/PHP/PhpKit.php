@@ -13,7 +13,7 @@
 
 /**
  */
-require_once(SGF_CORE . 'View/Php/Phpview.php');
+require_once(SGF_CORE . 'View/PHP/Phpview.php');
 
 /**
  * @package		ARK

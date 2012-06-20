@@ -1,7 +1,7 @@
 <?php
 //--------------------------------------------------------------------------------
 // Released to the public domain
-// See http://www.massassi.com/php/articles/template_engines/
+// See http://www.massassi.com/PHP/articles/template_engines/
 //--------------------------------------------------------------------------------
 
 /**
