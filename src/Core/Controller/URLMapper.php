@@ -15,7 +15,7 @@
  */
 //require_once(SGF_CORE . 'Controller/ActionPath.php');
 //require_once(SGF_CORE . 'Data/Arrayspace.php');
-//require_once(SGF_CORE . 'Data/Dotpath.php');
+//require_once(SGF_CORE . 'Data/DotPath.php');
 //require_once(SGF_CORE . 'Data/Session.php');
 require_once(SGF_CORE.'Controller/IURLMapper.php');
 

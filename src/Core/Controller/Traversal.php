@@ -15,7 +15,7 @@
 require_once (SGF_CORE.'Controller/ActionPath.php');
 require_once (SGF_CORE.'Controller/URLMapper.php');
 require_once (SGF_CORE.'Data/IDataSpace.php');
-require_once (SGF_CORE.'Data/Dotpath.php');
+require_once (SGF_CORE.'Data/DotPath.php');
 
 /**
  * @package		ARK
