@@ -14,7 +14,7 @@
  */
 require_once (SGF_CORE.'Controller/Dispatch.php');
 require_once (SGF_CORE.'Controller/Event.php');
-require_once (SGF_CORE.'Controller/Eventqueue.php');
+require_once (SGF_CORE.'Controller/EventQueue.php');
 require_once (SGF_CORE.'Controller/Traversal.php');
 
 /**

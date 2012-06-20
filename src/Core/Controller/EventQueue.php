@@ -6,7 +6,7 @@
 /**
  * @package		ARK
  * @subpackage	Controller
- * @version    $Id: eventqueue.php,v 1.1.1.1 2006/04/13 01:11:01 cambell Exp $
+ * @version    $Id: EventQueue.php,v 1.1.1.1 2006/04/13 01:11:01 cambell Exp $
  * @author		  Cambell Prince <cambell@arketec.com>
  * @link				http://www.arketec.com
  * @see
