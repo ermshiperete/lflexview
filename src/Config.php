@@ -9,7 +9,7 @@ define('LANG_IPA',        'th-fonipa');
 define('LANG_Other',      'en');
 
 // Path to the LIFT file
-define('APP_LiftFilePath', '/var/www/host/languageforge/LFDictionaryView/test/Data/tha-food.lift');
+define('APP_LiftFilePath', '/var/www/dictionaryview.local/SampleData/tha-food.lift');
 
 /* You shouldn't need to change anything below this line. */
 

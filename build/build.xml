@@ -35,10 +35,20 @@
 
 	<target name="build" depends="" />
 
-	<target name="package" depends="prepare" >
+	<property name="build.webSampleData" value="test/Data/tha-food.lift" />
+	<target name="copyWeb">
+		<copy todir="${build.output}/web">
+			<fileset dir="${build.webroot}"/>
+		</copy>
+		<copy todir="${build.output}/web/SampleData">
+			<fileset file="${build.webSampleData}"/>
+		</copy>		
+	</target>
+	
+	<target name="package" depends="prepare,copyWeb" >
 		<tar 
 			destfile="${build.packageFile}"
-			basedir="${build.webroot}"
+			basedir="${build.output}/web"
 			excludes="${build.packageFile}"
 			longfile="gnu"
 			compression="gzip" />
@@ -56,16 +66,18 @@
 		</copy>
 	</target>
 	
-	<property name="dev.depends.lexicon-view" location="../LFDictionaryView"/>
 	<property name="dev.installPath" location="/var/www/dictionaryview.local"/>
 	<property name="dev.hostPath" location="/var/www/host/languageforge/"/>
+	<property name="dev.depends.lexicon-view" location="${dev.hostPath}/LFDictionaryView"/>
 	<target name="devCleanInstall">
+		<symlink action="delete" link="${dev.installPath}/SampleData"/>
 		<symlink action="delete" link="${dev.installPath}/web"/> <!-- Deletion of this link seems flakey, don't rely on it CP 2012-06 -->
 	</target>
 	
 	<target name="devInstall">
 		<mkdir dir="${dev.installPath}" />
 		<symlink link="${dev.installPath}/web" resource="${dev.depends.lexicon-view}/src" overwrite="true"/>
+		<symlink link="${dev.installPath}/SampleData" resource="${dev.depends.lexicon-view}/test/Data" overwrite="true"/>
 	</target>
 	
 </project>
