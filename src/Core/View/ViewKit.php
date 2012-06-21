@@ -43,7 +43,7 @@ class ViewKit {
 				$c = 'XtplKit';
 				break;
 			case 'php':
-				$f = 'View/Php/Phpkit.php';
+				$f = 'View/PHP/PhpKit.php';
 				$c = 'PhpKit';
 				break;
 		}

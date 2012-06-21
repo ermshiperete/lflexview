@@ -36,11 +36,11 @@
 	<target name="build" depends="" />
 
 	<property name="build.webSampleData" value="test/Data/tha-food.lift" />
-	<target name="copyWeb">
-		<copy todir="${build.output}/web">
+	<target name="copyWeb" depends="prepare">
+		<copy todir="${build.output}/web" overwrite="true">
 			<fileset dir="${build.webroot}"/>
 		</copy>
-		<copy todir="${build.output}/web/SampleData">
+		<copy todir="${build.output}/web/SampleData" overwrite="true">
 			<fileset file="${build.webSampleData}"/>
 		</copy>		
 	</target>
@@ -55,7 +55,7 @@
 	</target>
 
 	<target name="install" depends="package,cleanInstall">
-		<untar src="${build.packageFile}" dest="${build.installPath}" compression="gzip" />
+		<untar src="${build.packageFile}" dest="${build.installPath}/web" compression="gzip" overwrite="true"/>
 	</target>
 
 	<!-- Development targets to help developers, not used for production -->
