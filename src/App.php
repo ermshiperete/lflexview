@@ -22,7 +22,7 @@ class Application extends FrontController
 	public function Application() {
 		$this->_stateSpace = new SimpleValueSpace();
 		
-		ControllerKit::connectURLMapper($_SERVER['PHP_SELF']);
+		ControllerKit::connectURLMapper('');
 		ViewKit::connect('php');
 
 		$this->setDefaultAction(ActionPath::fromString('Page/Home'));
