@@ -55,7 +55,7 @@
 	</target>
 
 	<target name="install" depends="package,cleanInstall">
-		<untar src="${build.packageFile}" dest="${build.installPath}/web" compression="gzip" overwrite="true"/>
+		<untar src="${build.packageFile}" dest="${build.installPath}" compression="gzip" overwrite="true"/>
 	</target>
 
 	<!-- Development targets to help developers, not used for production -->
