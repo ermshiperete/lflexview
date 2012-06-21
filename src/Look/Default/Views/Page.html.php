@@ -8,7 +8,7 @@
 <body>
 <div id="frame">
 <div id="headerMenu">
-<a href="/App.php?act=Page.Home">Home</a>
+<a href="App.php?act=Page.Home">Home</a>
 </div>
 <div id="headerSearchBar" style="background-color:#fff;  padding-bottom:10px; padding-top:10px; padding-left:320px; font-size:18px;">
 <?php echo $SearchForm; ?>
