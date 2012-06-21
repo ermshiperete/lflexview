@@ -87,3 +87,11 @@ div#senseFrame {
 	padding-left: 16px;
 }
 
+.senseImage {
+	float: right;
+	margin: 0 0 10px 10px;
+}
+
+div.exampleFrame {
+	margin: 0 220px 0 0;
+}

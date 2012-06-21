@@ -10,6 +10,8 @@ define('LANG_Other',      'en');
 
 // Path to the LIFT file
 define('APP_LiftFilePath', '/var/www/dictionaryview.local/SampleData/tha-food.lift');
+define('APP_LiftImagesFolder', 'pictures/');
+define('APP_LiftImageURL', 'SampleData/');
 
 /* You shouldn't need to change anything below this line. */
 

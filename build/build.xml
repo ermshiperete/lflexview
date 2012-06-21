@@ -35,13 +35,13 @@
 
 	<target name="build" depends="" />
 
-	<property name="build.webSampleData" value="test/Data/tha-food.lift" />
+	<property name="build.webSampleData" value="test/Data" />
 	<target name="copyWeb" depends="prepare">
 		<copy todir="${build.output}/web" overwrite="true">
 			<fileset dir="${build.webroot}"/>
 		</copy>
 		<copy todir="${build.output}/web/SampleData" overwrite="true">
-			<fileset file="${build.webSampleData}"/>
+			<fileset dir="${build.webSampleData}"/>
 		</copy>		
 	</target>
 	

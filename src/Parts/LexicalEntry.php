@@ -21,6 +21,18 @@ class LexicalEntry extends Part{
 				$guid = count($command->args) > 0 ? $command->args[0] : NULL;
 				$command = new commands\GetWordCommand(APP_LiftFilePath, $guid);
 				$space = $command->execute();
+				// Fix the image refs for our path
+				foreach ($space->getSpace('senses') as $sense) {
+					$image = $sense->get('image');
+					if ($image) {
+						if (strlen(APP_LiftImagesFolder) > 0 && strstr($image, APP_LiftImagesFolder) === FALSE) {
+							$image = APP_LiftImagesFolder . $image;
+						}
+						$image = APP_LiftImageURL . $image;
+						$sense->set('image', $image);
+					}
+				}
+				
 				$this->_lexicalEntry = $space;
 		}
 	}

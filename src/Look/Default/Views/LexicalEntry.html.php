@@ -4,8 +4,12 @@
 <p class="ipa"><?php echo $lexicalUnit->get(LANG_IPA);?></p>
 <?php $i = 1; $senses = $LexicalEntry->getSpace('senses'); if ($senses) foreach($senses as $sense): ?>
 <?php $partOfSpeech = $sense->get('partOfSpeech');?>
+<?php $image = $sense->get('image');?>
 <p class="partOfSpeech">[&nbsp;<?php echo $partOfSpeech; ?>&nbsp;]</p>
 <div id="senseFrame">
+<?php if ($image): ?>
+<img class="senseImage" src="<?php echo $image;?>" width="200" height="150" />
+<?php endif; ?>
 <?php $definition = $sense->getSpace('definition');?>
 <p class="definition"><?php echo $definition->get('en'); ?></p>
 <div class="exampleFrame">

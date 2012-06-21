@@ -80,14 +80,22 @@ class GetWordCommand
 	function readSense($node) {
 		$sense = new \TreeSpace();
 		
-		//Definition
-		$definition = $node->{'definition'};
-		$sense->setSpace('definition', $this->readMultiText($definition));
+		// Definition
+		if (isset($node->{'definition'})) {
+			$definition = $node->{'definition'};
+			$sense->setSpace('definition', $this->readMultiText($definition));
+		}
 		
-		//Part Of Speech
-		if(isset($node->{'grammatical-info'})) {
+		// Part Of Speech
+		if (isset($node->{'grammatical-info'})) {
 			$partOfSpeech = (string)$node->{'grammatical-info'}->attributes()->value;
 			$sense->set('partOfSpeech', $partOfSpeech);
+		}
+		
+		// Illustration
+		if (isset($node->{'illustration'})) {
+			$illustration = (string)$node->{'illustration'}['href'];
+			$sense->set('image', $illustration);
 		}
 		
 		//Semantic Domain // TODO This is bogus.  Check the trait name CP 2012-06
